@@ -91,24 +91,25 @@ const Home = () => {
     <View>
       <Text style={styles.headerText}>Home</Text>
       <ScrollView
-      style ={styles.container}
-      scrollEnabled = {true}
-      >
-      { products.map(({id, title, category,price, description,imageUrl})=>(
+        style ={styles.container}
+        scrollEnabled = {true}
+        >
+        { products.map(({id, title, category,price, description,imageUrl})=>(
         <View key = {id} style={styles.userCard}>
           <Image
             source={{uri:imageUrl}}
             style = {styles.imageCard}
           />
-          <Text>{title}</Text>
-          <Text>{category}</Text>
-          <Text>{price}</Text>
-          <Text>{description}</Text>
+            <View>
+              <Text style={styles.titleText}>{title}</Text>
+              <Text style={styles.categoryText}>Category: {category}</Text>
+              <Text style={styles.priceText}>Price: {price}</Text>
+              <Text style={styles.descriptionText}>{description}</Text>
+            </View>
 
         </View>
-      ))}
-    
-
+        ))}
+  
       </ScrollView>
     </View>
   );
@@ -122,17 +123,44 @@ const styles = StyleSheet.create({
     marginVertical:10
   },
   container:{
+    paddingHorizontal:16,
+    marginBottom:4
   },
   userCard:{
-    alignItems:'center'
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    marginBottom:4,
+    backgroundColor:'#f58f5e',
+    padding:10,
+    borderRadius:10
+  
   },
   imageCard:{
-    height:200,
-    width:200,
-    borderRadius: 200 / 2
+    height:60,
+    width:60,
+    borderRadius: 60 / 2,
+    marginRight:16,
+    
   },
-
-
-
+  titleText:{
+    fontSize:16,
+    fontWeight:'bold',
+    color:"white"
+  },
+  categoryText:{
+    fontSize:14,
+    color:"white",
+    fontWeight:'bold'
+  },
+  priceText:{
+    fontSize:14,
+    color:"white",
+    fontWeight:'bold'
+  },
+  descriptionText:{
+    fontSize:14,
+    color:"white"
+  }
 });
 export default Home;
